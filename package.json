@@ -1,61 +1,38 @@
 {
   "name": "ogl",
-  "productName": "ogl",
-  "version": "1.0.0",
-  "description": "My Electron application description",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "test": "mocha",
-    "lint": "echo \"No linting configured\""
-  },
-  "keywords": [],
+  "productName": "OGL",
+  "description": "Open Gamers' Library | Hoard, organize, rate and play your games!",
   "author": {
     "name": "Jakub Šindelář",
-    "email": "megastary@houby-studio.eu"
+    "email": "megastary@houby-stuio.com",
+    "url": "https://houby-studio.eu/"
   },
+  "version": "0.0.1",
   "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "ogl"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
+  "copyright": "Copyright © 2020 Houby Studio",
+  "build": {
+    "appId": "eu.houby-studio.ogl",
+    "mac": {
+      "category": "public.app-category.games"
+    },
+    "win": {
+      "target": "nsis"
     }
   },
+  "scripts": {
+    "dev": "electron-webpack dev",
+    "compile": "electron-webpack",
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
+    "postinstall": "electron-builder install-app-deps"
+  },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "source-map-support": "^0.5.12"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.46",
-    "@electron-forge/maker-deb": "^6.0.0-beta.46",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.46",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.46",
-    "@electron-forge/maker-zip": "^6.0.0-beta.46",
-    "electron": "7.1.4",
-    "mocha": "^6.2.2",
-    "spectron": "^9.0.0"
+    "electron": "5.0.6",
+    "electron-builder": "^21.0.11",
+    "electron-webpack": "^2.7.4",
+    "webpack": "~4.35.3"
   }
 }
