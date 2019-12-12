@@ -17,7 +17,20 @@
       "category": "public.app-category.games"
     },
     "win": {
-      "target": "nsis"
+      "target": [
+        "nsis",
+        "portable",
+        "msi"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "snap",
+        "deb",
+        "rpm",
+        "pacman"
+      ]
     }
   },
   "scripts": {
@@ -25,6 +38,7 @@
     "compile": "electron-webpack",
     "dist": "yarn compile && electron-builder",
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
+    "release": "build",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
