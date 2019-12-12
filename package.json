@@ -12,6 +12,7 @@
   "copyright": "Copyright © 2020 Houby Studio",
   "build": {
     "appId": "eu.houby-studio.ogl",
+    "publish": "github",
     "mac": {
       "category": "public.app-category.games"
     },
