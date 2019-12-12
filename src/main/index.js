@@ -3,6 +3,7 @@
 import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { format as formatUrl } from 'url'
+import { autoUpdater } from 'electron-updater'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
@@ -11,8 +12,7 @@ let mainWindow
 
 function createMainWindow () {
   const window = new BrowserWindow({
-    webPreferences: { nodeIntegration: true },
-    icon: path.join(__dirname, 'assets/icons/64x64.png')
+    webPreferences: { nodeIntegration: true }
   })
 
   if (isDevelopment) {
@@ -61,4 +61,5 @@ app.on('activate', () => {
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow()
+  autoUpdater.checkForUpdatesAndNotify()
 })
