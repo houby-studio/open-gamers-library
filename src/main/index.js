@@ -4,6 +4,7 @@ import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { format as formatUrl } from 'url'
 import { autoUpdater } from 'electron-updater'
+const log = require('electron-log')
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
@@ -61,5 +62,8 @@ app.on('activate', () => {
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow()
+  log.transports.file.level = 'info'
+  autoUpdater.logger = log
+  autoUpdater.logger.transports.file.level = 'info'
   autoUpdater.checkForUpdatesAndNotify()
 })
