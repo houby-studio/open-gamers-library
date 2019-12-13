@@ -1,13 +1,13 @@
 {
   "name": "ogl",
   "productName": "OGL",
-  "description": "Open Gamers' Library | Hoard, organize, rate and play your games!",
+  "description": "Open Gamers' Library - Hoard, organize, rate and play your games!",
   "author": {
     "name": "Jakub Šindelář",
     "email": "megastary@houby-stuio.com",
     "url": "https://houby-studio.eu/"
   },
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "MIT",
   "copyright": "Copyright © 2020 Houby Studio",
   "build": {
