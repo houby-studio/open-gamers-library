@@ -6,6 +6,7 @@ import { format as formatUrl } from 'url'
 import { autoUpdater } from 'electron-updater'
 const log = require('electron-log')
 
+process.env.APPIMAGE = __dirname
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
@@ -61,9 +62,24 @@ app.on('activate', () => {
 
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
-  mainWindow = createMainWindow()
   log.transports.file.level = 'info'
   autoUpdater.logger = log
   autoUpdater.logger.transports.file.level = 'info'
   autoUpdater.checkForUpdatesAndNotify()
+  mainWindow = createMainWindow()
+  log.log('readyyy')
+})
+
+// Fix for AppImageLauncher as it executes AppImage in read-only file system by default
+app.on('before-quit', () => {
+  if (process.env.DESKTOPINTEGRATION === 'AppImageLauncher') {
+    // remap temporary running AppImage to actual source
+    autoUpdater.logger.info('rewriting $APPIMAGE', {
+      oldValue: process.env.APPIMAGE,
+      newValue: process.env.ARGV0
+    })
+    process.env.APPIMAGE = process.env.ARGV0
+  } else {
+    autoUpdater.logger.info('Not running in AppImageLauncher')
+  }
 })
