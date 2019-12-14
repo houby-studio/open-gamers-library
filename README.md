@@ -23,7 +23,7 @@ Developers should gain:
 
 - knowledge of electron
 - knowledge of continuous integration (CI)
-- knowledge of automatic artifacts releasing
+- knowledge of automatic artifacts releasing (CD)
 - sense of pride and accomplishment 🏆
 
 # Installing
@@ -33,30 +33,33 @@ Follow link to [Releases][1] and follow instructions to download and install OGL
 ## Supported platforms
 
 - Windows
-  - Non-admin exe
-  - MSI
-  - AppX
+  - Exe setup
+    - user-install to **AppData** (Admin rights NOT required)
+    - machine-install to **Program Files** (All Users)
+  - Portable exe
 - macOS
   - DMG
   - Pkg
 - Linux
+  - AppImage
+  - Flatpak
   - RPM
   - deb
-  - Flatpak
-  - Snapcraft
+  - snap
+  - pacman
 - All platforms
   - Zip
   - Source code
 
 # Updating
 
-- Automatic updates for Windows and macOS via update.electronjs.org
+- Automatic updates for Windows (Exe installer) and Linux (AppImage)
 
 - Download new version from [Github][1]
 
 # Using
 
-- install and run downloaded application and start using it!  
+- install/launch downloaded application and start using it!  
 - customize background colors/wallpaper
 - select source games folder, insert metadata (manually or automatically)
 - browse, filter, rate and play your games
@@ -69,7 +72,10 @@ As a user, you can contribute by posting ideas and feature requests to [Github I
 
 As a developer, you can contribute just like to any other project, simply by taking over some task in [Github Issues][3], either feature requests, or fixing bugs.
 
-Everyone should read and obey our Code of conduct and Contributing guidance. Project is being linted upon Push or Pull requests and will fail if format is incorrect. We follow [StandardJS][4] rules as they are quite simple and we can easily fix everything with one command.
+Everyone has to read and follow our Code of conduct and Contributing guidance.
+
+Source code is being linted upon Push or Pull requests and CI will 
+fail if format breaks format rules. We follow [StandardJS][4] rules as they are standardized, quite simple and there are tools to easily format our code automatically.
 
 [1]: https://github.com/houby-studio/open-gamers-library/releases
 [2]: https://github.com/houby-studio/open-gamers-library/wiki
