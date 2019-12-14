@@ -7,7 +7,7 @@
     "email": "megastary@houby-stuio.com",
     "url": "https://houby-studio.eu/"
   },
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "MIT",
   "copyright": "Copyright © 2020 Houby Studio",
   "build": {
@@ -43,7 +43,8 @@
         "snap",
         "deb",
         "rpm",
-        "pacman"
+        "pacman",
+        "zip"
       ]
     }
   },
