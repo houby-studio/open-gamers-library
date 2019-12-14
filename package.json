@@ -43,8 +43,7 @@
         "snap",
         "deb",
         "rpm",
-        "pacman",
-        "zip"
+        "pacman"
       ]
     }
   },
