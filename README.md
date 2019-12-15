@@ -1,5 +1,7 @@
 # OGL | Open Gamers' Library [![HitCount](http://hits.dwyl.io/houby-studio/open-gamers-library.svg)](http://hits.dwyl.io/houby-studio/open-gamers-library)
 
+[![codecov](https://codecov.io/gh/houby-studio/open-gamers-library/branch/master/graph/badge.svg)](https://codecov.io/gh/houby-studio/open-gamers-library)
+
 Lightweight game library to manage your DRM-free games in your computer.
 
 # Project goals
