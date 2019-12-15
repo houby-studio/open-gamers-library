@@ -27,7 +27,7 @@ script:
         -v ~/.cache/electron:/root/.cache/electron \
         -v ~/.cache/electron-builder:/root/.cache/electron-builder \
         electronuserland/builder:wine-chrome \
-        /bin/bash -c "yarn install --link-duplicates --pure-lockfile && yarn lint && yarn test:unit && yarn release --win --linux -c.snap.publish=github"
+        /bin/bash -c "yarn install --link-duplicates --pure-lockfile && yarn release --win --linux -c.snap.publish=github"
     else
       yarn install;
       yarn lint && yarn test:unit && yarn release;
