@@ -3,7 +3,15 @@ jest.setTimeout(50000)
 
 test('Window Loads Properly', async () => {
   // Wait for dev server to start
-  const { app, stopServe } = await testWithSpectron()
+  const { app, stopServe } = await testWithSpectron({
+    spectronOptions: {
+      chromeDriverArgs: [
+        '--headless',
+        '--no-sandbox',
+        '--disable-dev-shm-usage'
+      ]
+    }
+  })
   const win = app.browserWindow
   const client = app.client
 

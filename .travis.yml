@@ -18,6 +18,9 @@ cache:
     - $HOME/.cache/electron
     - $HOME/.cache/electron-builder
 
+install:
+  - npm install -g codecov
+
 script:
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
@@ -27,10 +30,10 @@ script:
         -v ~/.cache/electron:/root/.cache/electron \
         -v ~/.cache/electron-builder:/root/.cache/electron-builder \
         electronuserland/builder:wine-chrome \
-        /bin/bash -c "yarn install --link-duplicates --pure-lockfile && yarn release --win --linux -c.snap.publish=github"
+        /bin/bash -c "yarn install --link-duplicates --pure-lockfile && yarn lint && yarn test:unit && codecov && yarn release --win --linux"
     else
       yarn install;
-      yarn lint && yarn test:unit && yarn release;
+      yarn lint && yarn test:unit && codecov && yarn release;
     fi
 
 before_cache:
