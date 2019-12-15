@@ -1,70 +1,59 @@
 {
-  "name": "ogl",
+  "name": "open-gamers-library",
   "productName": "OGL",
-  "description": "Open Gamers' Library - Hoard, organize, rate and play your games!",
+  "description": "Open Gamers' Library - Hoard, play and rate your games!",
   "author": {
     "name": "Jakub Šindelář",
     "email": "megastary@houby-stuio.com",
     "url": "https://houby-studio.eu/"
   },
-  "version": "0.0.9",
-  "license": "MIT",
-  "copyright": "Copyright © 2020 Houby Studio",
-  "build": {
-    "appId": "eu.houby-studio.ogl",
-    "publish": "github",
-    "mac": {
-      "category": "public.app-category.games"
-    },
-    "win": {
-      "target": [
-        "nsis",
-        "portable",
-        "zip"
-      ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true
-    },
-    "linux": {
-      "synopsis": "Open Gamers' Library",
-      "category": "Game",
-      "icon": "icons",
-      "desktop": {
-        "Type": "Application",
-        "Encoding": "UTF-8",
-        "Name": "OGL",
-        "Comment": "Open Gamers' Library",
-        "Terminal": "false"
-      },
-      "target": [
-        "AppImage",
-        "snap",
-        "deb",
-        "rpm",
-        "pacman",
-        "zip"
-      ]
-    }
-  },
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "electron-webpack dev",
-    "compile": "electron-webpack",
-    "dist": "yarn compile && electron-builder",
-    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
-    "release": "yarn compile && electron-builder -c.snap.publish=github",
-    "postinstall": "electron-builder install-app-deps"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint --coverage",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "release": "vue-cli-service electron:build",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps"
   },
+  "main": "background.js",
   "dependencies": {
-    "electron-log": "^4.0.0",
-    "electron-updater": "^4.2.0",
-    "source-map-support": "^0.5.12"
+    "core-js": "^3.4.3",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.3",
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
-    "electron": "5.0.6",
-    "electron-builder": "^21.0.11",
-    "electron-webpack": "^2.7.4",
-    "webpack": "~4.35.3"
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-plugin-router": "^4.1.0",
+    "@vue/cli-plugin-unit-jest": "^4.1.0",
+    "@vue/cli-plugin-vuex": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-eslint": "^10.0.3",
+    "electron": "^7.0.0",
+    "electron-updater": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "lint-staged": "^9.4.3",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "vue-cli-plugin-electron-builder": "^2.0.0-alpha.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
   }
 }
