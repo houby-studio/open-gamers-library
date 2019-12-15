@@ -37,6 +37,9 @@ module.exports = {
             'pacman',
             'zip'
           ]
+        },
+        snap: {
+          publish: 'github'
         }
       }
     }
