@@ -1,6 +1,6 @@
 <template>
-  <div class="library">
-    <h1>Library</h1>
+  <div class="explore">
+    <h1>Explore</h1>
     <p>Here resides view</p>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: 'library',
+  name: 'explore',
   components: {
     // Header
   }

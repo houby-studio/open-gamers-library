@@ -1,6 +1,6 @@
 <template>
-  <div class="library">
-    <h1>Library</h1>
+  <div class="profile">
+    <h1>Profile</h1>
     <p>Here resides view</p>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: 'library',
+  name: 'profile',
   components: {
     // Header
   }

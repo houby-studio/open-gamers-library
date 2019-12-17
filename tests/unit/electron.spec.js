@@ -3,15 +3,7 @@ jest.setTimeout(50000)
 
 test('Window Loads Properly', async () => {
   // Wait for dev server to start
-  const { app, stopServe } = await testWithSpectron({
-    spectronOptions: {
-      chromeDriverArgs: [
-        '--headless',
-        '--no-sandbox',
-        '--disable-dev-shm-usage'
-      ]
-    }
-  })
+  const { app, stopServe } = await testWithSpectron()
   const win = app.browserWindow
   const client = app.client
 
@@ -27,7 +19,7 @@ test('Window Loads Properly', async () => {
   expect(height).toBeGreaterThan(0)
   // App is loaded properly
   expect(
-    /Welcome to Your Vue\.js (\+ TypeScript )?App/.test(
+    /Launching client/.test(
       await client.getHTML('#app')
     )
   ).toBe(true)
