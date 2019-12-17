@@ -1,6 +1,7 @@
 {
   "name": "open-gamers-library",
-  "version": "0.1.1",
+  "productName": "OGL",
+  "version": "0.1.2",
   "private": true,
   "description": "Open Gamers' Library - Hoard, play and rate your games!",
   "author": {
@@ -58,6 +59,5 @@
       "vue-cli-service lint",
       "git add"
     ]
-  },
-  "productName": "OGL"
+  }
 }
