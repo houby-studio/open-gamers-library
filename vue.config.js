@@ -3,6 +3,8 @@ module.exports = {
     electronBuilder: {
       builderOptions: {
         appId: 'eu.houby-studio.ogl',
+        productName: 'OGL',
+        copyright: 'Copyright © 2020 Houby Studio',
         publish: 'github',
         mac: {
           category: 'public.app-category.games'
