@@ -1,5 +1,5 @@
 const { testWithSpectron } = require('vue-cli-plugin-electron-builder')
-jest.setTimeout(70000)
+jest.setTimeout(120000)
 
 test('Window Loads Properly', async () => {
   // Wait for dev server to start
