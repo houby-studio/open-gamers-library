@@ -8,7 +8,7 @@
                 <v-row>
                   <v-col cols="12" md="6">
                     <span>Scheme</span>
-                    <v-switch v-model="$vuetify.theme.dark" primary label="Dark" />
+                    <v-switch v-model="localtoggleDarkTheme" v-on:change="$vuetify.theme.dark = localtoggleDarkTheme" label="Dark" />
                   </v-col>
                   <v-col cols="12" md="6">
                     <span>Logo</span>
@@ -49,6 +49,14 @@ export default {
       },
       set: function () {
         this.$store.commit('hideFooter')
+      }
+    },
+    localtoggleDarkTheme: {
+      get: function () {
+        return this.$store.state.themeDark
+      },
+      set: function () {
+        this.$store.commit('toggleDarkTheme')
       }
     }
   }
