@@ -5,7 +5,7 @@ module.exports = {
         appId: 'eu.houby-studio.ogl',
         productName: 'OGL',
         copyright: 'Copyright © 2020 Houby Studio',
-        publish: 'github',
+        publish: ['github'],
         mac: {
           category: 'public.app-category.games'
         },
@@ -42,6 +42,11 @@ module.exports = {
         },
         snap: {
           publish: 'github'
+        }
+      },
+      chainWebpackRendererProcess: config => {
+        if (process.env.NODE_ENV === 'development') {
+          config.plugins.delete('prefetch')
         }
       }
     }

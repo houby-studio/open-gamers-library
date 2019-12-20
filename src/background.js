@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, dialog, shell, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import { autoUpdater } from 'electron-updater'
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -8,6 +8,25 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
+
+// Update available notifier - temporary as auto updates are broken on electron 7
+autoUpdater.on('update-available', () => {
+  dialog.showMessageBox({
+    type: 'info',
+    title: 'New Update Available',
+    message: 'New Update Available, do you want update now?\nYou can configure automatic updates in Settings',
+    buttons: ['Yes', 'No']
+  }).then(buttonIndex => {
+    if (buttonIndex.response === 0) {
+      shell.openExternal('https://github.com/houby-studio/open-gamers-library/releases/latest')
+    }
+  })
+})
+
+// Manual update checker
+ipcMain.on('check-for-updates', () => {
+  autoUpdater.checkForUpdates()
+})
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }])
@@ -30,8 +49,16 @@ function createWindow () {
     createProtocol('app')
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
-    autoUpdater.checkForUpdatesAndNotify()
+
+    // autoUpdater.checkForUpdatesAndNotify() // Currently this is broken on electron 7
+    autoUpdater.checkForUpdates()
   }
+
+  // When using a href with _blank target in renderer, this makes it open in default browser
+  // win.webContents.on('new-window', function (event, url) {
+  //   event.preventDefault()
+  //   shell.openExternal(url)
+  // })
 
   win.on('closed', () => {
     win = null
@@ -71,7 +98,6 @@ app.on('ready', async () => {
     // } catch (e) {
     //   console.error('Vue Devtools failed to install:', e.toString())
     // }
-
   }
   createWindow()
 })

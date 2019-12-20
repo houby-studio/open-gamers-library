@@ -8,40 +8,22 @@
               <h1>About</h1>
             </v-card-title>
             <v-card-subtitle>
-              Made with <v-icon>mdi-heart</v-icon>
+              Made with <v-icon>mdi-heart</v-icon> for <v-icon>mdi-gamepad-variant</v-icon>
             </v-card-subtitle>
             <v-card-text>
               <v-row>
                 <v-col cols="12" md="6">
                   <p>OGL Version {{ version }}</p>
-                  <span>Scheme</span>
-                  <v-switch v-model="$vuetify.theme.dark" primary label="Dark" />
+                  <p><a href="https://github.com/houby-studio/open-gamers-library/releases/latest" target="_blank"><v-icon>mdi-github-circle</v-icon>GitHub Releases</a></p>
                 </v-col>
-                <v-col cols="12" md="6">
-                  <span>Drawer</span>
-                  <v-radio-group v-model="primaryDrawer.type" column>
-                    <v-radio
-                      v-for="drawer in drawers"
-                      :key="drawer"
-                      :label="drawer"
-                      :value="drawer.toLowerCase()"
-                      primary
-                    />
-                  </v-radio-group>
-                  <v-switch v-model="primaryDrawer.clipped" label="Clipped" primary />
-                  <v-switch v-model="primaryDrawer.floating" label="Floating" primary />
-                  <v-switch v-model="primaryDrawer.mini" label="Mini" primary />
-                </v-col>
-                <v-col cols="12" md="6">
-                  <span>Footer</span>
-                  <v-switch label="Inset" primary />
+                <v-col>
+                  <p>Originally made as a small project, which turned out to be a small project. From gamer for gamers.</p>
                 </v-col>
               </v-row>
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn text>Cancel</v-btn>
-              <v-btn text color="primary">Submit</v-btn>
+              <v-btn text color="primary" @click="checkUpdates">Check For Updates</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -51,7 +33,7 @@
 </template>
 
 <script>
-import { remote } from 'electron'
+import { ipcRenderer } from 'electron'
 
 export default {
   name: 'profile',
@@ -66,8 +48,23 @@ export default {
       clipped: false,
       floating: false,
       mini: false
-    },
-    version: remote.app.getVersion()
-  })
+    }
+  }),
+  methods: {
+    checkUpdates: function () {
+      ipcRenderer.send('check-for-updates')
+    }
+  },
+  computed: {
+    version () {
+      return this.$store.state.version
+    }
+  }
 }
 </script>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+</style>
