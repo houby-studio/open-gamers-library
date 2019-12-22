@@ -13,6 +13,6 @@
 - No other changes
 
 ## 💬 Release Notes
-Released new version via Travis CI with CD
+This is a testing release.
 
 > Brought to you by 🍄 Houby Studio

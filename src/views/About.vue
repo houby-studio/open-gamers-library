@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { ipcRenderer } from 'electron'
+import { remote, ipcRenderer } from 'electron'
 
 export default {
   name: 'profile',
@@ -41,23 +41,11 @@ export default {
     // Header
   },
   data: () => ({
-    drawers: ['Default (no property)', 'Permanent', 'Temporary'],
-    primaryDrawer: {
-      model: null,
-      type: 'default (no property)',
-      clipped: false,
-      floating: false,
-      mini: false
-    }
+    version: remote.app.getVersion()
   }),
   methods: {
     checkUpdates: function () {
       ipcRenderer.send('check-for-updates')
-    }
-  },
-  computed: {
-    version () {
-      return this.$store.state.version
     }
   }
 }

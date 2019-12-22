@@ -1,25 +1,25 @@
 <template>
   <v-app-bar app>
-    <div v-if="!isHidden" class="d-flex align-center">
+    <div v-if="!logoHidden" class="d-flex align-center">
       <v-img
         alt="OGL Logo"
-        class="shrink mr-2"
+        class="shrink mr-2 hidden-xs-only"
         contain
         :src="require('../assets/logo.png')"
         transition="scale-transition"
         width="40"
       />
-      <v-toolbar-title d-xs-none>OGL</v-toolbar-title>
+      <v-toolbar-title class="hidden-xs-only">OGL</v-toolbar-title>
     </div>
-    <v-tabs show-arrows align-with-title centered grow>
+    <v-tabs color="dark" show-arrows align-with-title centered grow>
       <v-tab to="/library">
-        <v-icon>mdi-bookshelf</v-icon>Library
+        <v-icon>mdi-bookshelf</v-icon><span class="hidden-xs-only">Library</span>
       </v-tab>
       <v-tab to="/explore">
-        <v-icon>mdi-magnify</v-icon>Explore
+        <v-icon>mdi-magnify</v-icon><span class="hidden-xs-only">Explore</span>
       </v-tab>
       <v-tab to="/profile">
-        <v-icon>mdi-account</v-icon>Profile
+        <v-icon>mdi-account</v-icon><span class="hidden-xs-only">Profile</span>
       </v-tab>
     </v-tabs>
 
@@ -59,8 +59,8 @@ export default {
     }
   },
   computed: {
-    isHidden () {
-      return this.$store.state.logoIsHidden
+    logoHidden () {
+      return this.$store.state.settingsLogoHidden
     }
   }
 }

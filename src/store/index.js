@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersistence from 'vuex-persist'
-import { remote } from 'electron'
+// import { remote } from 'electron'
 
 Vue.use(Vuex)
 
@@ -11,20 +11,19 @@ const vuexLocal = new VuexPersistence({
 
 export default new Vuex.Store({
   state: {
-    version: remote.app.getVersion(),
-    footerIsHidden: false,
-    logoIsHidden: false,
-    themeDark: false
+    settingsFooterHidden: false,
+    settingsLogoHidden: false,
+    settingsThemeDark: false
   },
   mutations: {
     hideFooter (state) {
-      state.footerIsHidden = !state.footerIsHidden
+      state.settingsFooterHidden = !state.settingsFooterHidden
     },
     hideLogo (state) {
-      state.logoIsHidden = !state.logoIsHidden
+      state.settingsLogoHidden = !state.settingsLogoHidden
     },
     toggleDarkTheme (state) {
-      state.themeDark = !state.themeDark
+      state.settingsThemeDark = !state.settingsThemeDark
     }
   },
   actions: {

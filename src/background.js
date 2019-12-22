@@ -1,9 +1,15 @@
 'use strict'
 
-import { app, protocol, BrowserWindow, dialog, shell, ipcMain } from 'electron'
+import { app, protocol, BrowserWindow, dialog, shell } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import { autoUpdater } from 'electron-updater'
+// Import ipc event listeners
+import regIpcCheckForUpdate from './ipc/check-for-updates'
+
 const isDevelopment = process.env.NODE_ENV !== 'production'
+
+// Register ipc event listeners
+regIpcCheckForUpdate()
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -23,11 +29,6 @@ autoUpdater.on('update-available', () => {
   })
 })
 
-// Manual update checker
-ipcMain.on('check-for-updates', () => {
-  autoUpdater.checkForUpdates()
-})
-
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }])
 
@@ -36,6 +37,7 @@ function createWindow () {
   win = new BrowserWindow({
     width: 800,
     height: 600,
+    show: isDevelopment,
     webPreferences: {
       nodeIntegration: true
     }
@@ -49,6 +51,10 @@ function createWindow () {
     createProtocol('app')
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
+
+    win.once('ready-to-show', () => {
+      win.show()
+    })
 
     // autoUpdater.checkForUpdatesAndNotify() // Currently this is broken on electron 7
     autoUpdater.checkForUpdates()

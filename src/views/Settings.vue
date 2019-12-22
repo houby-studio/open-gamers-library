@@ -8,13 +8,13 @@
                 <v-row>
                   <v-col cols="12" md="6">
                     <span>Scheme</span>
-                    <v-switch v-model="localtoggleDarkTheme" v-on:change="$vuetify.theme.dark = localtoggleDarkTheme" label="Dark" />
+                    <v-switch v-model="toggleDarkTheme" v-on:change="$vuetify.theme.dark = toggleDarkTheme" label="Dark" />
                   </v-col>
                   <v-col cols="12" md="6">
                     <span>Logo</span>
-                    <v-switch v-model="localLogoIsHidden" label="Hide" />
+                    <v-switch v-model="toggleLogoHidden" label="Hide" />
                     <span>Footer</span>
-                    <v-switch v-model="localFooterIsHidden" label="Hide" />
+                    <v-switch v-model="toggleFooterHidden" label="Hide" />
                   </v-col>
                 </v-row>
               </v-card-text>
@@ -35,25 +35,25 @@
 export default {
   name: 'settings',
   computed: {
-    localLogoIsHidden: {
+    toggleLogoHidden: {
       get: function () {
-        return this.$store.state.logoIsHidden
+        return this.$store.state.settingsLogoHidden
       },
       set: function () {
         this.$store.commit('hideLogo')
       }
     },
-    localFooterIsHidden: {
+    toggleFooterHidden: {
       get: function () {
-        return this.$store.state.footerIsHidden
+        return this.$store.state.settingsFooterHidden
       },
       set: function () {
         this.$store.commit('hideFooter')
       }
     },
-    localtoggleDarkTheme: {
+    toggleDarkTheme: {
       get: function () {
-        return this.$store.state.themeDark
+        return this.$store.state.settingsThemeDark
       },
       set: function () {
         this.$store.commit('toggleDarkTheme')

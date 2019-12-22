@@ -6,9 +6,13 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
-new Vue({
+var vueApp = new Vue({
   router,
   store,
   vuetify,
   render: h => h(App)
-}).$mount('#app')
+})
+
+vueApp.$vuetify.theme.dark = store.state.themeDark
+
+vueApp.$mount('#app')
