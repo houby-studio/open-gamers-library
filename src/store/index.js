@@ -30,12 +30,10 @@ export default new Vuex.Store({
       state.settingsThemeDark = !state.settingsThemeDark
     },
     setThemeAccent (state, { dark, light }) {
-      console.log(`Set accent. This is ${dark} and this is ${light}.`)
       state.settingsThemeAccentColorDark = dark
       state.settingsThemeAccentColorLight = light
     },
     setThemePrimary (state, { dark, light }) {
-      console.log(`Set primary. This is ${dark} and this is ${light}.`)
       state.settingsThemePrimaryColorDark = dark
       state.settingsThemePrimaryColorLight = light
     }
