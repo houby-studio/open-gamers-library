@@ -13,7 +13,11 @@ export default new Vuex.Store({
   state: {
     settingsFooterHidden: false,
     settingsLogoHidden: false,
-    settingsThemeDark: false
+    settingsThemeDark: false,
+    settingsThemeAccentColorDark: '#e0e0e0',
+    settingsThemeAccentColorLight: '#424242',
+    settingsThemePrimaryColorDark: '#424242',
+    settingsThemePrimaryColorLight: '#ffffff'
   },
   mutations: {
     hideFooter (state) {
@@ -24,6 +28,16 @@ export default new Vuex.Store({
     },
     toggleDarkTheme (state) {
       state.settingsThemeDark = !state.settingsThemeDark
+    },
+    setThemeAccent (state, { dark, light }) {
+      console.log(`Set accent. This is ${dark} and this is ${light}.`)
+      state.settingsThemeAccentColorDark = dark
+      state.settingsThemeAccentColorLight = light
+    },
+    setThemePrimary (state, { dark, light }) {
+      console.log(`Set primary. This is ${dark} and this is ${light}.`)
+      state.settingsThemePrimaryColorDark = dark
+      state.settingsThemePrimaryColorLight = light
     }
   },
   actions: {
