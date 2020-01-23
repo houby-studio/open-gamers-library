@@ -80,6 +80,14 @@ Everyone has to read and follow our Code of conduct and Contributing guidance.
 Source code is being linted upon Push or Pull requests and CI will 
 fail if format breaks format rules. We follow [StandardJS][4] rules as they are standardized, quite simple and there are tools to easily format our code automatically.
 
+## Forking repo and developing
+
+1. git clone https://github.com/houby-studio/open-gamers-library.git
+2. sudo yarn global add @vue/cli
+3. yarn install
+4. vue add electron-builder
+5. debug, build and contribute!
+
 [1]: https://github.com/houby-studio/open-gamers-library/releases
 [2]: https://github.com/houby-studio/open-gamers-library/wiki
 [3]: https://github.com/houby-studio/open-gamers-library/issues
