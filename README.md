@@ -1,3 +1,8 @@
+# BEWARE: Project postponed indefinitely!
+
+> This project's main goal was to familiarize with Vue and that goal was achieved. We may one day return to this project and finish it. Although it is very unlikely.  
+If you want us to continue on this project, let us know, or contribute!
+
 # OGL | Open Gamers' Library [![HitCount](http://hits.dwyl.io/houby-studio/open-gamers-library.svg)](http://hits.dwyl.io/houby-studio/open-gamers-library)
 
 [![Build Status](https://travis-ci.com/houby-studio/open-gamers-library.svg?branch=master)](https://travis-ci.com/houby-studio/open-gamers-library)
